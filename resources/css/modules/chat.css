@@ -1,0 +1,7 @@
+/* Importar módulos del chat */
+@import "chat/layout.css";
+@import "chat/header.css";
+@import "chat/messages.css";
+@import "chat/input.css";
+@import "chat/scroll-btn.css";
+

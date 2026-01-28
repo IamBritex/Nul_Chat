@@ -1,0 +1,62 @@
+/* --- LAYOUT PRINCIPAL (FLEXBOX) --- */
+.chat-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+}
+
+/* --- CHAT AREA --- */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+    height: 100%;
+    background-color: var(--bg-primary);
+    z-index: 10;
+}
+
+/* --- MOBILE RESPONSIVE LOGIC (ANIMACIÓN SUAVE) --- */
+@media (max-width: 768px) {
+    /* 1. Sidebar ocupa todo el ancho y está en posición absoluta base */
+    .chat-layout .sidebar {
+        width: 100% !important;
+        z-index: 20;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(0);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Curva suave */
+    }
+
+    /* 2. Chat Area está "fuera de pantalla" a la derecha */
+    .chat-layout .chat-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 30;
+        
+        /* Estado inicial: Oculto a la derecha */
+        transform: translateX(100%); 
+        
+        /* Animación de entrada/salida */
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex; /* Siempre display flex, solo lo movemos */
+    }
+
+    /* 3. ESTADO ACTIVO: El chat se desliza a la vista (0%) */
+    .chat-layout.mobile-chat-active .chat-area {
+        transform: translateX(0%);
+    }
+
+    /* Opcional: Mover el sidebar a la izquierda para efecto parallax sutil */
+    .chat-layout.mobile-chat-active .sidebar {
+        transform: translateX(-20%);
+    }
+}

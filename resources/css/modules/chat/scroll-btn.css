@@ -1,0 +1,51 @@
+/* --- BOTÓN SCROLL DOWN (Burbuja de Jabón) --- */
+.scroll-bottom-btn {
+    position: absolute;
+    bottom: 90px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    
+    /* Efecto Glassmorphism */
+    background-color: rgba(40, 40, 40, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    color: var(--accent-color);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50; 
+    
+    /* Animación Suave */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-bottom-btn:hover {
+    background-color: rgba(60, 60, 60, 0.7);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Estado oculto */
+.scroll-bottom-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(15px) scale(0.9);
+}
+
+/* Ajuste móvil */
+@media (max-width: 768px) {
+    .scroll-bottom-btn {
+        bottom: 80px;
+        right: 16px;
+    }
+}

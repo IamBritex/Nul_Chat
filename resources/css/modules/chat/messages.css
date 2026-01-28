@@ -1,0 +1,66 @@
+.messages-container {
+    flex: 1;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px; 
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; 
+}
+
+.message-row {
+    display: flex;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.message-bubble {
+    max-width: 75%;
+    padding: 8px 14px;
+    border-radius: 16px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.message-row.sent { justify-content: flex-end; }
+.message-row.sent .message-bubble { border-bottom-right-radius: 2px; }
+
+.message-row.received { justify-content: flex-start; }
+.message-row.received .message-bubble { border-bottom-left-radius: 2px; }
+
+/* --- META INFO (Hora + Bolitas) --- */
+.message-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinear a la derecha */
+    gap: 6px; /* Espacio entre hora y bolitas */
+    margin-top: 4px;
+    min-height: 14px;
+}
+
+.time {
+    font-size: 0.65rem;
+    opacity: 0.6;
+}
+
+/* --- STATUS DOTS (Bolitas) --- */
+.status-dots {
+    display: flex;
+    gap: 2px;
+    font-size: 0.55rem; /* Tamaño de las bolitas */
+}
+
+/* Colores de estado */
+.status-dots.pending { color: var(--text-muted); } /* Gris oscuro/transparente */
+.status-dots.sent { color: var(--text-secondary); } /* Gris claro */
+.status-dots.read { color: #3498db; } /* Azul bonito */
+.status-dots.error { color: var(--danger-color); } /* Rojo */
+
+/* ... (Separadores y Empty State igual que antes) ... */
+.date-separator { display: flex; justify-content: center; margin: 24px 0; position: relative; flex-shrink: 0; }
+.date-separator span { background-color: var(--bg-tertiary); color: var(--text-secondary); font-size: 0.75rem; padding: 4px 12px; border-radius: 12px; font-weight: 500; }
+.empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); opacity: 0.5; min-height: 200px; }
+.empty-icon { font-size: 3rem; margin-bottom: 10px; }

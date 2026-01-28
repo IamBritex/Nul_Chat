@@ -1,0 +1,60 @@
+/* --- HEADER --- */
+.chat-header {
+    height: 70px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.chat-header.hidden {
+    visibility: hidden; 
+}
+
+/* Botón Atrás (Solo móvil) */
+.back-btn {
+    display: none;
+    margin-right: 12px;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .back-btn {
+        display: flex; 
+    }
+}
+
+.header-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-tertiary);
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.status-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}

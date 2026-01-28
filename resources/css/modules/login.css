@@ -1,0 +1,78 @@
+/* --- FUENTE NOTHING --- */
+@font-face {
+    font-family: 'NothingFont';
+    /* La ruta debe ser relativa a donde está este archivo CSS */
+    src: url('../../assets/fonts/nothing-font-5x7.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- LAYOUT --- */
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* --- TÍTULO (Solo aquí se usa la fuente) --- */
+.auth-title {
+    font-family: 'NothingFont', sans-serif;
+    font-size: 4rem; 
+    margin-bottom: 40px;
+    letter-spacing: 4px; /* Un poco más de espacio para estética pixel */
+    color: var(--text-primary);
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.auth-subtitle {
+    margin-bottom: 48px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* --- BOTÓN GOOGLE --- */
+.google-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: transparent; /* Fondo transparente */
+    color: var(--text-primary);
+    
+    /* BORDES SOLICITADOS */
+    border: 2px solid var(--border-color); 
+    
+    padding: 16px;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+.google-btn:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-primary); /* Invertir colores al hover */
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.google-btn:active {
+    transform: scale(0.98);
+}
+
+.auth-error {
+    margin-top: 20px;
+    color: var(--danger-color);
+    font-size: 0.85rem;
+    padding: 10px;
+    border: 1px solid var(--danger-color);
+    display: none;
+}

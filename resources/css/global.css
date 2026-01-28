@@ -1,0 +1,130 @@
+:root {
+    --bg-primary: #000000;
+    --bg-secondary: #0c0c0c;
+    --bg-tertiary: #1f1f1f;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1a1;
+    --text-muted: #525252;
+
+    --accent-color: #ffffff;
+    --accent-hover: #d4d4d4;
+    --danger-color: #ff4444;
+    
+    --border-color: #262626;
+    --border-radius: 12px;
+    
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --transition-speed: 0.2s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    height: 100dvh;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* --- TWEMOJI STYLES (NUEVO) --- */
+img.emoji {
+    height: 1.2em; /* Un poco más grande que la fuente para mejor visibilidad */
+    width: 1.2em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.2em; /* Ajuste fino para alineación vertical */
+    pointer-events: none; /* Evita que se puedan arrastrar como imágenes */
+}
+
+#app-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ... Resto de tus estilos globales (inputs, botones, scrollbar, etc.) ... */
+input, button, textarea, div[contenteditable] {
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform var(--transition-speed), opacity var(--transition-speed);
+}
+
+button:active { transform: scale(0.98); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+button.secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+button.icon-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.icon-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.centered-layout {
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.scrollable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-tertiary) transparent;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background-color: var(--bg-tertiary); border-radius: 3px; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 { margin-bottom: 16px; font-weight: 700; letter-spacing: -0.5px; }
+p { line-height: 1.5; color: var(--text-secondary); margin-bottom: 16px; }
+.hidden { display: none !important; }
