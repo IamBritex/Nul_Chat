@@ -1,0 +1,123 @@
+/* Modificación al padre para permitir que el menú caiga abajo */
+.input-area.menu-open {
+    flex-wrap: wrap !important;
+    gap: 0 !important;
+}
+
+/* Contenedor del menú integrado */
+.attachment-drawer {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+    background-color: transparent; 
+    
+    /* POR DEFECTO OCULTO PARA NO OCUPAR ESPACIO */
+    display: none; 
+    opacity: 0;
+    
+    order: 10; 
+    flex-basis: 100%;
+}
+
+/* Estado visible */
+.attachment-drawer.visible {
+    height: 280px; 
+    margin-top: 10px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+    opacity: 1;
+}
+
+/* GRID CONTAINER */
+.cards-container {
+    display: grid;
+    /* MÓVIL: 3 Columnas */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    
+    height: 100%;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    padding: 5px;
+    
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-secondary) transparent;
+}
+
+/* PC: 5 Columnas (Breakpoints típicos de tablet/desktop) */
+@media (min-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.cards-container::-webkit-scrollbar {
+    width: 4px;
+}
+.cards-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+/* Cards */
+.attach-card {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.attach-card:active {
+    transform: scale(0.95);
+}
+
+.attach-card.action-card {
+    background: rgba(52, 183, 241, 0.1); 
+    border-color: rgba(52, 183, 241, 0.2);
+}
+
+.attach-card.action-card:hover {
+    background: rgba(52, 183, 241, 0.15); 
+}
+
+.attach-card i {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #34b7f1;
+}
+
+.attach-card span {
+    font-size: 11px;
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: center;
+}
+
+.attach-card.image-card {
+    padding: 0;
+    border: none;
+}
+
+.attach-card.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.attach-card.image-card:hover img {
+    opacity: 1;
+}
+
+.hidden-input { display: none; }

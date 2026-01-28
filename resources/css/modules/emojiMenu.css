@@ -1,0 +1,110 @@
+/* --- DRAWER --- */
+.emoji-drawer {
+    display: none; 
+    flex-direction: column;
+    width: 100%;
+    height: 300px; 
+    background-color: var(--bg-sidebar);
+    border-top: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.emoji-drawer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- TABS --- */
+.emoji-categories {
+    display: flex;
+    overflow-x: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 40px;
+    flex-shrink: 0;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.emoji-categories::-webkit-scrollbar { display: none; }
+
+.category-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 16px;
+    width: 44px;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.category-btn:hover { color: var(--text-primary); background-color: rgba(255,255,255,0.05); }
+.category-btn.active { color: #34b7f1; border-bottom-color: #34b7f1; }
+
+/* --- ÁREA DE SCROLL PRINCIPAL --- */
+.emoji-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    position: relative;
+    /* Comportamiento de scroll suave para clicks en tabs */
+    scroll-behavior: smooth;
+}
+
+/* --- SECCIONES DE CATEGORÍA --- */
+.emoji-section {
+    padding-bottom: 15px;
+}
+
+.category-title {
+    font-size: 12px;
+    color: var(--text-secondary);
+    background-color: rgba(0,0,0,0.2); /* Sticky header visual */
+    padding: 5px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.emoji-grid-section {
+    display: grid;
+    /* Grid responsivo */
+    grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+    gap: 2px;
+    padding: 5px 8px;
+    align-content: start;
+}
+
+/* --- BOTÓN EMOJI --- */
+.emoji-btn {
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    user-select: none;
+    aspect-ratio: 1 / 1; 
+}
+.emoji-btn img.emoji {
+    width: 24px !important;
+    height: 24px !important;
+    pointer-events: none;
+}
+.emoji-btn:hover { background-color: rgba(255,255,255,0.1); }
+.emoji-btn:active { transform: scale(0.9); }
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.2); border-radius: 2px; }

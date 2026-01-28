@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'NothingFont';
+    src: url('../assets/fonts/nothing-font-5x7.ttf') format('truetype');
+}
+
+#mobile-splash {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* --- Splash Screen (Sin cambios) --- */
+    #mobile-splash {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        animation: splashExit 0.8s ease-in-out 1.3s forwards;
+    }
+
+    .splash-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        opacity: 0;
+        animation: contentEnter 1s ease-out 0.3s forwards;
+    }
+
+    .splash-title {
+        font-family: 'NothingFont', sans-serif;
+        font-size: 5rem;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1;
+        letter-spacing: 2px;
+    }
+
+    .splash-slogan {
+        font-family: Arial, sans-serif;
+        font-size: 0.85rem;
+        color: #cccccc;
+        margin: 0;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+
+    @keyframes contentEnter {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes splashExit {
+        0% { opacity: 1; visibility: visible; }
+        99% { opacity: 0; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+    
+    /* ---------------------------------------------- */
+    /* --- Layout Principal Móvil --- */
+    
+    .app-layout {
+        position: relative;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    /* SIDEBAR: Siempre visible abajo, se mueve un poco al abrir chat */
+    .sidebar {
+        width: 100% !important;
+        min-width: 100%;
+        height: 100%;
+        display: flex;
+        z-index: 10;
+        border-right: none;
+        
+        /* Posicionamiento Absoluto Forzado */
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transform: translateX(0); /* Estado normal: Centrado */
+    }
+
+    /* CHAT AREA: Entra y sale */
+    .chat-area {
+        width: 100% !important;
+        height: 100%;
+        
+        /* Posicionamiento Absoluto Forzado encima de sidebar */
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 20;
+        
+        display: flex !important;
+        background-color: var(--bg-chat);
+        
+        /* ESTADO INICIAL (Cerrado): */
+        transform: translateX(100%); /* Fuera de pantalla a la derecha */
+        visibility: hidden;          /* Invisible e inclickable */
+        
+        /* Transición: 
+           - Transform dura 0.3s.
+           - Visibility espera 0.3s antes de ocultarse (para que se vea la animación de salida) */
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                    visibility 0s linear 0.3s;
+    }
+
+    /* Ajustes internos */
+    .chat-area .header { left: 0; width: 100%; }
+    .back-btn { display: block; }
+
+    /* --- ESTADO ACTIVO (Chat Abierto) --- */
+
+    /* La sidebar se mueve un poco a la izquierda (efecto profundidad) */
+    .app-layout.mobile-chat-active .sidebar {
+        transform: translateX(-25%);
+        pointer-events: none; /* No clickear contactos mientras chateas */
+    }
+
+    /* El chat entra y se vuelve visible */
+    .app-layout.mobile-chat-active .chat-area {
+        transform: translateX(0);
+        visibility: visible;
+        /* Al entrar, visibility es inmediato (delay 0s) */
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                    visibility 0s linear 0s;
+    }
+    
+    .messages-container {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 80px;
+    }
+    
+    .input-area {
+        left: 0;
+        width: 100%;
+        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    }
+
+    /* FIX: El dashboard nunca debe existir/verse en móvil */
+    #no-chat-view {
+        display: none !important;
+    }
+}

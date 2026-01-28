@@ -1,0 +1,295 @@
+/* --- MENSAJES --- */
+.message { 
+    margin-bottom: 12px; 
+    max-width: 75%; 
+    display: flex; 
+    min-width: 0; 
+    position: relative;
+    transform-origin: bottom left;
+    opacity: 1; 
+}
+
+/* --- TWEMOJI STYLES --- */
+img.emoji {
+    height: 1.3em;
+    width: 1.3em;
+    margin: 0 1px;
+    vertical-align: -0.25em;
+    display: inline-block;
+    pointer-events: none; /* Que no se puedan arrastrar como imágenes */
+}
+
+.chat-link {
+    color: #34b7f1; 
+    text-decoration: underline;
+    font-weight: 500;
+    word-break: break-all; 
+    cursor: pointer;
+}
+
+.read-more-link {
+    color: #34b7f1;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.read-more-link:hover {
+    text-decoration: underline;
+}
+
+.message.received { align-self: flex-start; transform-origin: bottom left; }
+.message.sent { align-self: flex-end; justify-content: flex-end; transform-origin: bottom right; }
+
+.message.msg-enter { 
+    animation: messagePopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; 
+}
+
+.message.msg-exit { 
+    animation: messagePopOut 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
+}
+
+.message.msg-stagger {
+    opacity: 0; 
+    animation: messageSlideUpFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes messageSlideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.date-divider {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0 12px 0;
+    width: 100%;
+    user-select: none;
+}
+
+.date-divider span {
+    background-color: #000000;
+    color: var(--text-secondary);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+.bubble {
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 19px;
+    box-shadow: var(--shadow);
+    word-wrap: break-word;
+    overflow-wrap: anywhere; 
+    white-space: pre-wrap;
+    display: block; 
+    position: relative; 
+    padding-bottom: 24px; 
+    width: fit-content; 
+    max-width: 100%;
+    min-width: 90px; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.received .bubble { 
+    background-color: var(--bubble-received); 
+    border-top-left-radius: 0; 
+    color: var(--text-primary);
+}
+
+.sent .bubble { 
+    background-color: var(--bubble-sent); 
+    color: var(--text-sent); 
+    border-top-right-radius: 0; 
+}
+
+/* --- ESTILOS PARA SOLO EMOJI (CORREGIDO Y AJUSTADO PARA TWEMOJI) --- */
+.message.emoji-only .bubble {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    
+    /* Font-size controla el tamaño de la imagen Twemoji (gracias al width: 1.3em) */
+    font-size: 3.5rem; 
+    
+    line-height: 1;
+    padding: 0;
+    margin-bottom: 5px; 
+    min-width: 0;
+    overflow: visible;
+    position: relative;
+    display: inline-block;
+}
+
+.message.emoji-only .message-meta {
+    position: absolute;
+    bottom: -15px; 
+    right: -10px;
+    
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Ajustes de alineación específicos */
+/* En recibidos, el emoji está a la izquierda, la hora en su esquina derecha */
+.message.emoji-only.received .message-meta {
+    right: -5px; 
+    bottom: -25px;
+}
+
+/* En enviados, el emoji está a la derecha, la hora en su esquina derecha */
+.message.emoji-only.sent .message-meta {
+    right: 0;
+    bottom: -12px;
+}
+
+.message.emoji-only .time {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 10px;
+    margin: 0;
+}
+
+.message.emoji-only .status-icon {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.message.emoji-only .status-icon.read {
+    color: #34b7f1 !important;
+}
+/* ------------------------------- */
+
+.message-image {
+    display: block;
+    max-width: 100%;
+    max-height: 350px; 
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    object-fit: cover;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.image-grid {
+    display: grid;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    width: 100%;
+    max-width: 280px; 
+}
+
+.image-grid.grid-2 { grid-template-columns: repeat(2, 1fr); aspect-ratio: 2 / 1; }
+.image-grid.grid-3 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); aspect-ratio: 1 / 1; }
+.image-grid.grid-3 .grid-item:first-child { grid-row: span 2; height: 100%; }
+.image-grid.grid-4 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); aspect-ratio: 1 / 1; }
+
+.grid-item { position: relative; width: 100%; height: 100%; cursor: pointer; overflow: hidden; }
+.grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s; }
+.grid-item:hover img { transform: scale(1.05); }
+
+.more-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 600; z-index: 2;
+    backdrop-filter: blur(2px);
+}
+
+.message-meta {
+    position: absolute; 
+    bottom: 5px; 
+    right: 10px;
+    display: flex; 
+    align-items: center; 
+    gap: 5px;
+    pointer-events: none;
+}
+
+.time { 
+    font-size: 11px; 
+    color: rgba(255, 255, 255, 0.6); 
+    margin-right: 2px;
+}
+
+.status-icon {
+    font-size: 14px;
+    color: #b0b0b0; 
+    transition: color 0.3s ease;
+}
+
+.status-icon.read { color: #34b7f1 !important; }
+
+.received .status-icon { display: none; }
+.received .time { margin-right: 0; }
+
+.link-preview-card {
+    display: flex; flex-direction: column;
+    background-color: #000000;
+    margin: 8px auto; border-radius: 8px; overflow: hidden;
+    text-decoration: none; color: inherit;
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 100%; max-width: 280px; min-width: 180px;
+}
+.preview-image {
+    width: 100%; height: 140px; 
+    background-position: center; background-size: cover; background-repeat: no-repeat;
+    background-color: #111;
+}
+.preview-info { padding: 8px 10px; display: flex; flex-direction: column; gap: 3px; }
+.preview-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.preview-desc { font-size: 11px; color: var(--text-secondary); }
+.preview-domain { font-size: 10px; color: rgba(255,255,255,0.4); }
+
+.typing-indicator {
+    padding: 12px 16px; display: flex; align-items: center; gap: 4px;
+    height: 38px; padding-bottom: 12px; min-width: 60px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.typing-dot {
+    width: 6px; height: 6px;
+    background-color: var(--text-primary);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+    0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes messagePopIn {
+    0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes messagePopOut {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.9); }
+}

@@ -1,0 +1,78 @@
+#pwa-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 2147483647;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+#pwa-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.pwa-container {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    width: 85%;
+    max-width: 320px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.pwa-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.pwa-title {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.pwa-text {
+    color: #aaa;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.pwa-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.btn-install {
+    background-color: white;
+    color: black;
+}
+
+.btn-close {
+    background-color: transparent;
+    color: #666;
+    font-weight: normal;
+    font-size: 0.9rem;
+}

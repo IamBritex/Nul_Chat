@@ -1,0 +1,25 @@
+:root {
+    /* --- PALETA ULTRA DARK MONOCHROME (Ajustada) --- */
+    
+    /* Fondos Generales */
+    --bg-app: #000000;
+    --bg-sidebar: #000000;
+    --bg-chat: #000000;
+    --bg-input: rgba(255, 255, 255, 0.1);
+    
+    /* Cabeceras */
+    --header-color: rgba(0, 0, 0, 0.9);
+    --border-color: rgba(255, 255, 255, 0.15);
+    
+    /* Burbujas (AHORA NEGRAS) */
+    --bubble-sent: #000000;
+    --text-sent: #ffffff;
+    
+    --bubble-received: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.5);
+    
+    /* Iconos y Varios */
+    --icon-color: rgba(255, 255, 255, 0.8);
+    --shadow: 0 1px 2px rgba(255, 255, 255, 0.1); /* Sombra sutil blanca para contraste */
+}

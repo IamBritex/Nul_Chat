@@ -1,0 +1,252 @@
+/* --- SKELETON LOADING (ANIMACIÓN) --- */
+.skeleton {
+    background: #2a2a2a;
+    background: linear-gradient(90deg, #2a2a2a 0%, #3a3a3a 50%, #2a2a2a 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+}
+.avatar-circle.skeleton {
+    background-color: transparent;
+    color: transparent;
+    display: flex;
+    border: none;
+}
+.skeleton-text { height: 12px; margin-bottom: 2px; display: block; }
+.skeleton-bubble { min-width: 100px; padding: 12px; }
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* --- EMPTY STATES (SIDEBAR) --- */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 30px;
+    text-align: center;
+    color: var(--text-secondary);
+    animation: fadeIn 0.4s ease forwards;
+}
+.empty-state i { font-size: 48px; margin-bottom: 20px; color: var(--icon-color); opacity: 0.5; }
+.empty-state h3 { color: var(--text-primary); font-size: 18px; margin-bottom: 10px; font-weight: 500; }
+.empty-state p { font-size: 14px; line-height: 1.4; margin-bottom: 25px; max-width: 250px; }
+
+/* Botones Comunes */
+.btn-primary {
+    background-color: var(--text-primary);
+    color: var(--bg-app);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+.btn-primary:active { transform: scale(0.95); opacity: 0.9; }
+
+.search-trigger-btn {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+.search-trigger-btn:hover { background-color: var(--border-color); }
+
+/* ESTADO VACÍO DENTRO DEL CHAT */
+.chat-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    text-align: center;
+    opacity: 0.7;
+    animation: fadeIn 0.3s ease;
+}
+.chat-empty-state i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: var(--icon-color);
+}
+.chat-empty-state p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* --- DASHBOARD TIPO DISCORD (ADAPTADO A TU PALETA) --- */
+.discord-dashboard {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    
+    /* CAMBIO: Usamos tus variables de fondo */
+    background-color: var(--bg-chat);
+    /* Un gradiente sutil usando tu negro profundo y el gris del sidebar */
+    background: radial-gradient(circle at top right, var(--bg-sidebar) 0%, var(--bg-chat) 100%);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Escena de la Mascota */
+.mascot-scene {
+    position: relative;
+    margin-bottom: 30px;
+    height: 120px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.mascot-float {
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.main-mascot {
+    font-size: 80px;
+    /* CAMBIO: Usamos tu color de texto principal o blanco suave */
+    color: var(--text-primary); 
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+}
+
+.shadow {
+    width: 60px;
+    height: 10px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 50%;
+    margin: 10px auto 0;
+    animation: shadowScale 6s ease-in-out infinite;
+}
+
+.floating-icons i {
+    position: absolute;
+    color: var(--icon-color);
+    font-size: 24px;
+    opacity: 0.3; /* Iconos sutiles */
+}
+.icon-float-1 { top: 0; left: 20px; animation: floatIcon 8s infinite 0s; }
+.icon-float-2 { top: 40px; right: 10px; animation: floatIcon 7s infinite 2s; font-size: 30px !important; }
+.icon-float-3 { bottom: 0; left: 40px; animation: floatIcon 9s infinite 1s; }
+
+/* Textos */
+.welcome-title {
+    font-size: 28px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.welcome-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+/* Tarjetas de Acción */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%;
+}
+
+.dash-card {
+    /* CAMBIO: Fondo sidebar para las tarjetas */
+    background-color: var(--bg-sidebar);
+    padding: 20px;
+    border-radius: 16px; /* Más redondeado para coincidir con tu input */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+}
+
+.dash-card:hover:not(.disabled) {
+    background-color: var(--bg-input); /* Ligeramente más claro al hover */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    border-color: #444;
+}
+
+.dash-card.disabled { opacity: 0.5; cursor: default; }
+
+.card-icon-bg {
+    width: 40px;
+    height: 40px;
+    /* CAMBIO: Fondo input para el icono */
+    background-color: var(--bg-input);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.card-text h3 { font-size: 15px; color: var(--text-primary); margin-bottom: 3px; font-weight: 600; }
+.card-text p { font-size: 12px; color: var(--text-secondary); }
+
+/* Badge Final */
+.encrypted-badge {
+    font-size: 11px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-input);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+/* Animaciones */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+@keyframes shadowScale {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(0.8); opacity: 0.1; }
+}
+@keyframes floatIcon {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translate(-10px, -40px) rotate(20deg); opacity: 0; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
