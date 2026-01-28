@@ -1,0 +1,50 @@
+/* =========================================
+   ESTILOS PARA MENSAJES DE SOLO EMOJI
+   ========================================= */
+
+/* 1. Quitar fondo de la burbuja contenedora principal */
+.message-row.emoji-only .message-bubble {
+    background-color: transparent !important;
+    padding: 0;
+    box-shadow: none;
+    max-width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Alinear contenido según quien envía */
+.message-row.sent.emoji-only .message-bubble { align-items: flex-end; }
+.message-row.received.emoji-only .message-bubble { align-items: flex-start; }
+
+/* 3. Hacer los emojis GIGANTES */
+.message-row.emoji-only .message-text img.emoji {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    margin: 0 4px;
+    vertical-align: middle;
+}
+
+/* 4. La burbuja ahora es SOLO la hora (Meta) */
+.message-row.emoji-only .message-meta {
+    background-color: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-top: -10px; /* Subir para acercar al emoji */
+    display: inline-flex;
+    width: fit-content;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 2;
+}
+
+/* Color específico para enviados */
+.message-row.sent.emoji-only .message-meta {
+    background-color: rgba(60, 60, 60, 0.9);
+}
+
+/* Ajuste de los puntos de estado en modo emoji */
+.message-row.emoji-only .status-dots i {
+    border-color: #333; /* Coincidir con el fondo oscuro de la mini burbuja */
+    background-color: #333;
+}

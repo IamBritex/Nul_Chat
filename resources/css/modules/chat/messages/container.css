@@ -1,0 +1,11 @@
+/* --- MENSAJES CONTAINER --- */
+.messages-container {
+    flex: 1;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px; 
+    overflow-y: auto;
+    /* Scroll suave en iOS */
+    -webkit-overflow-scrolling: touch; 
+}

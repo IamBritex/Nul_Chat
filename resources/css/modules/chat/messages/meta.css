@@ -1,0 +1,52 @@
+/* --- META INFO (Hora + Bolitas) --- */
+.message-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 2px;
+    min-height: 14px;
+    line-height: 1;
+}
+
+.time {
+    font-size: 0.65rem;
+    opacity: 0.6;
+    color: var(--text-primary);
+}
+
+/* --- STATUS DOTS (Bolitas Superpuestas) --- */
+.status-dots {
+    display: flex;
+    align-items: center;
+    height: 12px;
+    padding-left: 2px;
+}
+
+.status-dots i {
+    font-size: 0.55rem;
+    
+    /* Efecto de recorte */
+    border: 1.5px solid var(--bg-tertiary);
+    border-radius: 50%;
+    background-color: var(--bg-tertiary);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.7rem; 
+    height: 0.7rem;
+    box-sizing: content-box;
+}
+
+.status-dots i:nth-child(2) {
+    margin-left: -6px; /* Superposición */
+    position: relative;
+    z-index: 2;
+}
+
+/* Colores de estado */
+.status-dots.pending { color: var(--text-muted); }
+.status-dots.sent { color: var(--text-secondary); }
+.status-dots.read { color: #3498db; }
+.status-dots.error { color: var(--danger-color); }

@@ -1,0 +1,39 @@
+/* --- FILA DE MENSAJE --- */
+.message-row {
+    display: flex;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+/* --- BURBUJA ESTÁNDAR --- */
+.message-bubble {
+    max-width: 75%;
+    padding: 8px 14px;
+    border-radius: 16px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    
+    /* Colores por defecto */
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    transition: all 0.2s;
+}
+
+/* Alineación y bordes: Enviado */
+.message-row.sent {
+    justify-content: flex-end;
+}
+
+.message-row.sent .message-bubble {
+    border-bottom-right-radius: 2px;
+}
+
+/* Alineación y bordes: Recibido */
+.message-row.received {
+    justify-content: flex-start;
+}
+
+.message-row.received .message-bubble {
+    border-bottom-left-radius: 2px;
+}
